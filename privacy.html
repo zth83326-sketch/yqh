@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="yqh Privacy Policy — how developer credentials, video files and captions are handled when publishing to TikTok via the official Content Posting API. yqh 隐私政策。" />
+<link rel="icon" href="data:," />
+<title>yqh 隐私政策 · Privacy Policy</title>
+<style>
+  :root{
+    --bg:#f7f7f5;
+    --surface:#ffffff;
+    --text:#1a1a1a;
+    --muted:#5c5c5c;
+    --faint:#8a8a86;
+    --line:#e6e6e1;
+    --line-strong:#d4d4ce;
+    --accent:#0f0f0f;
+    --accent-text:#ffffff;
+    --note-bg:#f2f2ef;
+    --link:#1a1a1a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#111110;
+      --surface:#1a1a19;
+      --text:#ececea;
+      --muted:#a8a8a3;
+      --faint:#7d7d78;
+      --line:#2c2c2a;
+      --line-strong:#3d3d3a;
+      --accent:#ececea;
+      --accent-text:#111110;
+      --note-bg:#222221;
+      --link:#ececea;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--line-strong)}
+  a:hover{text-decoration-color:var(--text)}
+  button{min-height:40px}
+
+  .wrap{max-width:840px; margin:0 auto; padding:0 20px 64px}
+
+  /* Document header */
+  .doc-head{padding:40px 0 28px; border-bottom:2px solid var(--text)}
+  .doc-head .product{
+    font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; margin:0 0 14px;
+  }
+  .doc-head h1{
+    font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+    font-size:clamp(30px, 6vw, 44px); line-height:1.15; font-weight:700; letter-spacing:-.01em; margin:0 0 6px;
+  }
+  .doc-head h1 .en{display:block; font-size:.52em; font-weight:400; color:var(--muted); letter-spacing:0; margin-top:8px}
+  .meta{
+    display:flex; flex-wrap:wrap; gap:8px 28px; margin-top:20px; font-size:14px; color:var(--muted);
+  }
+  .meta strong{color:var(--text); font-weight:600}
+  .intro{
+    margin:22px 0 0; font-size:16.5px; line-height:1.8; color:var(--text);
+  }
+  .intro-en{color:var(--muted); font-size:15px; margin-top:10px}
+
+  /* Language switch */
+  .lang-bar{
+    position:sticky; top:0; z-index:10;
+    background:color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    padding:14px 0 12px; margin:0 -20px; padding-left:20px; padding-right:20px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+  }
+  .seg{display:inline-flex; background:var(--surface); border:1px solid var(--line-strong); border-radius:999px; padding:3px}
+  .seg button{
+    border:0; background:transparent; color:var(--muted); font:inherit; font-size:14px; font-weight:600;
+    padding:6px 18px; border-radius:999px; cursor:pointer; min-height:40px; min-width:96px;
+  }
+  .seg button[aria-pressed="true"]{background:var(--accent); color:var(--accent-text)}
+  .lang-hint{font-size:13px; color:var(--faint)}
+
+  /* TOC */
+  .toc{
+    background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:24px 0 8px;
+  }
+  .toc h2{font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 12px; font-weight:700}
+  .toc ol{margin:0; padding-left:20px; columns:2; column-gap:36px}
+  .toc li{margin:0 0 7px; break-inside:avoid; font-size:14.5px; line-height:1.5}
+  .toc a{text-decoration:none}
+  .toc a:hover{text-decoration:underline}
+  @media (max-width:600px){ .toc ol{columns:1} }
+
+  /* Policy body */
+  .policy{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:8px 28px 12px; margin-top:16px}
+  @media (max-width:600px){ .policy{padding:4px 20px 8px} }
+  section{padding:22px 0 6px; border-bottom:1px solid var(--line)}
+  section:last-child{border-bottom:0}
+  section h2{
+    font-size:19px; line-height:1.4; font-weight:700; margin:0 0 12px; letter-spacing:-.01em;
+    display:flex; gap:10px; align-items:baseline;
+  }
+  section h2 .num{font-family:Georgia, serif; color:var(--faint); font-weight:400; font-size:17px; flex:none}
+  section h3{font-size:16px; font-weight:700; margin:20px 0 6px}
+  section p{margin:0 0 12px}
+  section ul{margin:0 0 14px; padding-left:22px}
+  section li{margin-bottom:7px}
+  section li::marker{color:var(--faint)}
+  .note{
+    background:var(--note-bg); border-radius:8px; padding:14px 16px; margin:14px 0 16px; font-size:14.5px; line-height:1.7;
+  }
+  .note strong{display:block; margin-bottom:4px; font-size:14px}
+  code{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.88em;
+    background:var(--note-bg); padding:1px 6px; border-radius:5px; word-break:break-all;
+  }
+  .hidden{display:none !important}
+
+  footer{padding:28px 4px 0; font-size:13.5px; color:var(--muted); line-height:1.7}
+  footer .rule{height:1px; background:var(--line-strong); margin-bottom:18px}
+  @media print{
+    .lang-bar{display:none}
+    body{background:#fff}
+    .policy,.toc{border:0; padding-left:0; padding-right:0}
+    .wrap{max-width:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc-head">
+    <p class="product">yqh — Short Video Publishing Tool</p>
+    <h1>隐私政策 <span class="en">Privacy Policy</span></h1>
+    <div class="meta">
+      <span><strong>生效日期 / Effective:</strong> 2026 年 11 月 18 日 · November 18, 2026</span>
+      <span><strong>版本 / Version:</strong> 1.0</span>
+    </div>
+    <p class="intro">yqh 是一款短视频发布工具，帮助创作者和商家将制作完成的视频通过 TikTok 官方 Content Posting API 发布到 TikTok。本政策说明 yqh 处理哪些信息、为何处理、信息保存在哪里、保留多久，以及您如何删除这些信息。</p>
+    <p class="intro intro-en">yqh is a short-video publishing tool that helps creators and businesses publish finished videos to TikTok through TikTok's official Content Posting API. This Policy explains what information yqh handles, why, where it is stored, how long it is kept, and how you can delete it.</p>
+  </header>
+
+  <div class="lang-bar">
+    <div class="seg" role="group" aria-label="Language / 语言">
+      <button type="button" id="btn-zh" aria-pressed="true">中文</button>
+      <button type="button" id="btn-en" aria-pressed="false">English</button>
+    </div>
+    <span class="lang-hint" id="lang-hint">以下为中文版本 · English version available above</span>
+  </div>
+
+  <!-- ================= CHINESE ================= -->
+  <div id="doc-zh" lang="zh-CN">
+    <nav class="toc" aria-label="目录">
+      <h2>目录</h2>
+      <ol>
+        <li><a href="#zh-1">适用范围与运营者</a></li>
+        <li><a href="#zh-2">我们处理的信息</a></li>
+        <li><a href="#zh-3">信息的使用目的</a></li>
+        <li><a href="#zh-4">数据存储与安全</a></li>
+        <li><a href="#zh-5">数据共享与披露</a></li>
+        <li><a href="#zh-6">数据保留期限</a></li>
+        <li><a href="#zh-7">您的权利与删除方式</a></li>
+        <li><a href="#zh-8">第三方服务：TikTok</a></li>
+        <li><a href="#zh-9">未成年人隐私</a></li>
+        <li><a href="#zh-10">本政策的更新</a></li>
+        <li><a href="#zh-11">联系我们</a></li>
+      </ol>
+    </nav>
+
+    <div class="policy">
+      <section id="zh-1">
+        <h2><span class="num">1.</span>适用范围与运营者</h2>
+        <p>本政策适用于 yqh 短视频发布工具（以下简称“yqh”或“本工具”）的全部功能，包括凭据配置、视频上传与排队、定时发布、发布状态查询和发布记录管理。</p>
+        <p>yqh 是一个供使用者在自有环境中运行的发布工具。您在本工具中填写的开发者凭据、视频文件和文案，由您自行提供并保存在您自己的运行环境中；yqh 不运营用于汇集上述内容的中央账号系统，也不会要求您提供 TikTok 账号密码。</p>
+      </section>
+
+      <section id="zh-2">
+        <h2><span class="num">2.</span>我们处理的信息</h2>
+        <p>为完成发布，yqh 仅处理以下由您主动提供或在发布过程中产生的信息：</p>
+        <h3>2.1 TikTok 开发者凭据</h3>
+        <ul>
+          <li>Client Key（客户端密钥标识）与 Client Secret（客户端密钥）；</li>
+          <li>Access Token（访问令牌），以及您选择填写时的 Refresh Token（刷新令牌）；</li>
+          <li>与令牌关联的 TikTok 账号基本信息，例如账号标识和可用的隐私设置选项（由 TikTok 接口在校验令牌时返回）。</li>
+        </ul>
+        <h3>2.2 待发布内容</h3>
+        <ul>
+          <li>您上传的视频文件，或您提供的公开视频链接；</li>
+          <li>视频文案（标题／描述）、话题标签、隐私级别、是否允许评论／合拍／拼接等发布设置；</li>
+          <li>您设置的发布时间与排队安排。</li>
+        </ul>
+        <h3>2.3 发布记录与技术信息</h3>
+        <ul>
+          <li>每次发布的提交时间、发布状态（发布中、已发布、失败）以及 TikTok 接口返回的发布标识和错误信息；</li>
+          <li>为排查故障所必需的有限运行日志（例如请求时间与接口返回码）。日志不包含您的 TikTok 账号密码。</li>
+        </ul>
+        <div class="note"><strong>yqh 不收集的信息</strong>yqh 不收集您的 TikTok 登录密码，不读取您的私信、通讯录、精确位置，也不收集与视频发布无关的设备信息或浏览记录。</div>
+      </section>
+
+      <section id="zh-3">
+        <h2><span class="num">3.</span>信息的使用目的</h2>
+        <p>上述信息仅用于以下目的，不作其他用途：</p>
+        <ul>
+          <li>使用您的凭据调用 TikTok 官方 Content Posting API，校验令牌有效性并读取可用的发布设置；</li>
+          <li>按您的指令将视频文件和文案提交至 TikTok，包括分块上传、发起发布和轮询发布状态；</li>
+          <li>按您在发布时的设置向 TikTok 传递内容标注信息（例如 AI 生成内容标注）；</li>
+          <li>执行您设置的定时排队，并在工具内向您展示发布进度与历史记录；</li>
+          <li>在发布失败时向您呈现 TikTok 返回的真实原因，以便您修正后重试。</li>
+        </ul>
+        <p>yqh 不将您的凭据、视频或文案用于广告投放、用户画像、模型训练或任何与发布无关的目的。</p>
+      </section>
+
+      <section id="zh-4">
+        <h2><span class="num">4.</span>数据存储与安全</h2>
+        <ul>
+          <li><strong>存储位置：</strong>凭据、待发布内容和发布记录保存在您运行 yqh 的自有环境（您的设备或您控制的服务器）中，不会上传或同步到 yqh 运营方的服务器。</li>
+          <li><strong>传输安全：</strong>yqh 与 TikTok 官方接口之间的通信通过 HTTPS 加密传输。</li>
+          <li><strong>凭据保护：</strong>Client Secret 和令牌在界面中以掩码形式显示。请像保管密码一样保管您的凭据，不要将其发送给他人或发布到公开渠道；如怀疑凭据泄露，请立即在 TikTok 开发者平台重置 Client Secret 并撤销令牌。</li>
+          <li><strong>访问控制：</strong>只有持有您环境访问权限的人才能查看或使用其中保存的凭据与记录，请确保您的设备和服务器本身设有妥善的登录保护。</li>
+        </ul>
+      </section>
+
+      <section id="zh-5">
+        <h2><span class="num">5.</span>数据共享与披露</h2>
+        <p><strong>yqh 不出售、出租或交易您的任何信息，也不会将其分享给广告商、数据经纪商或其他第三方。</strong></p>
+        <p>唯一的对外传输发生在您执行发布时：yqh 将完成发布所必需的视频文件、文案和发布设置，通过官方接口发送给 TikTok。除此之外，仅在以下情形可能披露信息：</p>
+        <ul>
+          <li>法律法规、法院命令或监管机构依法提出的要求；</li>
+          <li>为保护 yqh、使用者或公众的权利、财产与安全所必需，且以最小范围为限。</li>
+        </ul>
+      </section>
+
+      <section id="zh-6">
+        <h2><span class="num">6.</span>数据保留期限</h2>
+        <ul>
+          <li><strong>开发者凭据：</strong>自您填入之日起保留，直至您在工具设置中删除、或您在 TikTok 侧撤销授权／令牌失效为止。yqh 不会在您删除后继续保留凭据副本。</li>
+          <li><strong>待发布视频与文案：</strong>在排队和发布期间保留；发布完成后，其本地副本的保留与删除由您在自有环境中管理，您可随时手动删除。</li>
+          <li><strong>发布记录：</strong>保留在您的环境中供您查阅，直至您手动删除；yqh 不设定强制保留期，也不会在您删除后恢复。</li>
+          <li><strong>已发布到 TikTok 的内容：</strong>视频一旦发布成功，即存储于 TikTok 平台，其保留与删除受 TikTok 的条款和您在 TikTok 内的操作约束（见第 8 节）。</li>
+        </ul>
+      </section>
+
+      <section id="zh-7">
+        <h2><span class="num">7.</span>您的权利与删除方式</h2>
+        <p>由于数据保存在您自己的环境中，您对数据拥有直接、完整的控制权，无需等待人工处理：</p>
+        <ul>
+          <li><strong>删除凭据：</strong>进入 yqh「设置／连接设置」，删除已保存的 Client Key、Client Secret 和令牌，保存后即刻生效；</li>
+          <li><strong>删除发布记录与内容：</strong>在「发布记录」中删除单条或全部记录，并删除本地保存的视频文件与文案草稿；</li>
+          <li><strong>撤销 TikTok 授权：</strong>在 TikTok 应用内依次打开「设置和隐私 → 安全与权限 → 应用和服务」，找到 yqh 并撤销访问权限，撤销后令牌立即失效；</li>
+          <li><strong>彻底清除：</strong>停止使用并清除 yqh 在您环境中的全部数据，即可删除本工具保存的一切信息。</li>
+        </ul>
+        <p>您也可以随时停止使用本工具；停止使用不会影响已发布到 TikTok 的内容，您可在 TikTok 内自行管理或删除。</p>
+      </section>
+
+      <section id="zh-8">
+        <h2><span class="num">8.</span>第三方服务：TikTok</h2>
+        <p>yqh 通过 TikTok for Developers 提供的官方 Content Posting API 与 TikTok 交互。当您发布视频时，TikTok 将按照其自身的隐私政策和服务条款处理您提交的视频、文案及账号信息。建议您一并阅读 TikTok 的隐私政策与开发者条款。本政策不适用于 TikTok 或其他第三方平台对信息的处理。</p>
+      </section>
+
+      <section id="zh-9">
+        <h2><span class="num">9.</span>未成年人隐私</h2>
+        <p>yqh 面向使用 TikTok 开发者平台的创作者和商家，不面向未成年人提供服务，也不会有意收集未成年人的信息。如您认为未成年人向本工具提供了信息，请通过第 11 节的方式联系我们，我们将协助处理。</p>
+      </section>
+
+      <section id="zh-10">
+        <h2><span class="num">10.</span>本政策的更新</h2>
+        <p>我们可能因功能变化或法律要求更新本政策。更新后将在本页面发布新版本，并修改顶部的生效日期与版本号；如变更涉及数据处理方式的实质调整，我们将在工具内以显著方式提示。更新生效后您继续使用 yqh，即视为接受更新后的政策。</p>
+      </section>
+
+      <section id="zh-11">
+        <h2><span class="num">11.</span>联系我们</h2>
+        <p>如您对本政策或 yqh 的数据处理有任何疑问、意见，或需要协助行使删除等权利，请通过 TikTok 开发者平台（developers.tiktok.com）中 yqh 应用详情页所列的开发者联系方式与我们联系。我们将在合理期限内回复并处理您的请求。</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================= ENGLISH ================= -->
+  <div id="doc-en" lang="en" class="hidden">
+    <nav class="toc" aria-label="Contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#en-1">Scope and Operator</a></li>
+        <li><a href="#en-2">Information We Handle</a></li>
+        <li><a href="#en-3">How We Use Information</a></li>
+        <li><a href="#en-4">Data Storage and Security</a></li>
+        <li><a href="#en-5">Data Sharing and Disclosure</a></li>
+        <li><a href="#en-6">Data Retention</a></li>
+        <li><a href="#en-7">Your Rights and How to Delete Data</a></li>
+        <li><a href="#en-8">Third-Party Service: TikTok</a></li>
+        <li><a href="#en-9">Children's Privacy</a></li>
+        <li><a href="#en-10">Changes to This Policy</a></li>
+        <li><a href="#en-11">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <div class="policy">
+      <section id="en-1">
+        <h2><span class="num">1.</span>Scope and Operator</h2>
+        <p>This Policy applies to all features of yqh, a short-video publishing tool (the “Tool”), including credential configuration, video upload and queuing, scheduled publishing, publishing-status queries, and publishing-history management.</p>
+        <p>yqh runs in an environment controlled by you, the user. The developer credentials, video files, and captions you enter into the Tool are provided by you and stored in your own environment. yqh does not operate a central account system that collects this content, and it never asks for your TikTok account password.</p>
+      </section>
+
+      <section id="en-2">
+        <h2><span class="num">2.</span>Information We Handle</h2>
+        <p>To publish on your behalf, yqh handles only the following information, which you provide or which is generated during publishing:</p>
+        <h3>2.1 TikTok Developer Credentials</h3>
+        <ul>
+          <li>Your Client Key and Client Secret;</li>
+          <li>Your access token and, if you choose to provide it, your refresh token;</li>
+          <li>Basic information about the TikTok account associated with the token — such as the account identifier and the privacy options available to it — returned by TikTok when the token is verified.</li>
+        </ul>
+        <h3>2.2 Content to Be Published</h3>
+        <ul>
+          <li>Video files you upload, or public video URLs you provide;</li>
+          <li>Captions (title/description), hashtags, privacy level, and interaction settings such as whether comments, duets, and stitches are allowed;</li>
+          <li>Publish times and queue arrangements you set.</li>
+        </ul>
+        <h3>2.3 Publishing Records and Technical Information</h3>
+        <ul>
+          <li>For each publish request: the submission time, the publishing status (processing, published, or failed), and the publish identifier and error information returned by TikTok;</li>
+          <li>Limited operational logs necessary for troubleshooting, such as request times and API response codes. Logs never contain your TikTok password.</li>
+        </ul>
+        <div class="note"><strong>What yqh does not collect</strong>yqh does not collect your TikTok login password, and does not access your direct messages, contacts, precise location, or any device information or browsing history unrelated to publishing.</div>
+      </section>
+
+      <section id="en-3">
+        <h2><span class="num">3.</span>How We Use Information</h2>
+        <p>The information above is used solely for the following purposes:</p>
+        <ul>
+          <li>Calling TikTok's official Content Posting API with your credentials to verify your token and retrieve the publishing options available to your account;</li>
+          <li>Submitting your video files and captions to TikTok as you instruct, including chunked upload, publish initiation, and polling of publishing status;</li>
+          <li>Passing content-disclosure information to TikTok as configured at publish time (for example, AI-generated content labeling);</li>
+          <li>Running the scheduled queue you set up and showing you publishing progress and history inside the Tool;</li>
+          <li>When a publish attempt fails, showing you the actual reason returned by TikTok so you can correct it and retry.</li>
+        </ul>
+        <p>yqh does not use your credentials, videos, or captions for advertising, profiling, model training, or any purpose unrelated to publishing.</p>
+      </section>
+
+      <section id="en-4">
+        <h2><span class="num">4.</span>Data Storage and Security</h2>
+        <ul>
+          <li><strong>Where data lives:</strong> Credentials, queued content, and publishing records are stored in your own environment (your device or a server you control). They are not uploaded to, or synced with, servers operated by yqh.</li>
+          <li><strong>Encryption in transit:</strong> All communication between yqh and TikTok's official API endpoints uses HTTPS.</li>
+          <li><strong>Protecting credentials:</strong> Your Client Secret and tokens are shown masked in the interface. Treat them like passwords: never send them to others or post them publicly. If you suspect a credential has been exposed, reset your Client Secret and revoke your tokens in the TikTok Developer Portal immediately.</li>
+          <li><strong>Access control:</strong> Only people with access to your environment can view or use the credentials and records stored there, so please keep your own devices and servers protected with appropriate sign-in controls.</li>
+        </ul>
+      </section>
+
+      <section id="en-5">
+        <h2><span class="num">5.</span>Data Sharing and Disclosure</h2>
+        <p><strong>yqh does not sell, rent, or trade any of your information, and does not share it with advertisers, data brokers, or any other third party.</strong></p>
+        <p>The only external transfer occurs when you publish: yqh sends the video file, caption, and publishing settings required to complete the post to TikTok through its official API. Beyond that, information may be disclosed only:</p>
+        <ul>
+          <li>Where required by applicable law, a court order, or a lawful request from a regulator; or</li>
+          <li>Where necessary — and only to the minimum extent required — to protect the rights, property, or safety of yqh, its users, or the public.</li>
+        </ul>
+      </section>
+
+      <section id="en-6">
+        <h2><span class="num">6.</span>Data Retention</h2>
+        <ul>
+          <li><strong>Developer credentials:</strong> Retained from the moment you enter them until you delete them in the Tool's settings, revoke authorization on TikTok's side, or the token expires. yqh keeps no copy of your credentials after you delete them.</li>
+          <li><strong>Queued videos and captions:</strong> Retained while queued and publishing. After publishing, any local copy remains under your control in your own environment and can be deleted by you at any time.</li>
+          <li><strong>Publishing records:</strong> Retained in your environment for your reference until you delete them manually. yqh imposes no mandatory retention period and does not restore records you have deleted.</li>
+          <li><strong>Content published to TikTok:</strong> Once a video is published successfully, it is stored on TikTok's platform. Its retention and deletion are governed by TikTok's terms and by your actions within TikTok (see Section 8).</li>
+        </ul>
+      </section>
+
+      <section id="en-7">
+        <h2><span class="num">7.</span>Your Rights and How to Delete Data</h2>
+        <p>Because your data is stored in your own environment, you have direct and complete control over it — no manual request process is needed:</p>
+        <ul>
+          <li><strong>Delete credentials:</strong> In yqh, open Settings / Connection Settings and delete the saved Client Key, Client Secret, and tokens. Deletion takes effect immediately upon saving.</li>
+          <li><strong>Delete records and content:</strong> In Publishing History, delete individual entries or the entire history, and delete locally stored video files and caption drafts.</li>
+          <li><strong>Revoke TikTok authorization:</strong> In the TikTok app, go to Settings and privacy → Security &amp; permissions → Apps and services, locate yqh, and revoke access. Your token becomes invalid immediately.</li>
+          <li><strong>Erase everything:</strong> Stop using the Tool and clear all yqh data from your environment to remove everything the Tool has stored.</li>
+        </ul>
+        <p>You may stop using the Tool at any time. Doing so does not affect content already published to TikTok, which you can continue to manage or delete within TikTok.</p>
+      </section>
+
+      <section id="en-8">
+        <h2><span class="num">8.</span>Third-Party Service: TikTok</h2>
+        <p>yqh interacts with TikTok through the official Content Posting API provided by TikTok for Developers. When you publish a video, TikTok processes the video, caption, and account information you submit in accordance with its own privacy policy and terms of service. We recommend reviewing TikTok's Privacy Policy and developer terms as well. This Policy does not govern how TikTok or any other third-party platform handles information.</p>
+      </section>
+
+      <section id="en-9">
+        <h2><span class="num">9.</span>Children's Privacy</h2>
+        <p>yqh is intended for creators and businesses using the TikTok Developer Platform. It is not directed to minors, and we do not knowingly collect information from minors. If you believe a minor has provided information to the Tool, please contact us as described in Section 11 and we will assist you.</p>
+      </section>
+
+      <section id="en-10">
+        <h2><span class="num">10.</span>Changes to This Policy</h2>
+        <p>We may update this Policy as features change or as required by law. Updates will be posted on this page with a revised effective date and version number; if a change materially alters how data is handled, we will highlight it prominently within the Tool. Your continued use of yqh after an update takes effect constitutes acceptance of the updated Policy.</p>
+      </section>
+
+      <section id="en-11">
+        <h2><span class="num">11.</span>Contact Us</h2>
+        <p>If you have any questions or comments about this Policy or about how yqh handles data, or if you need assistance exercising your deletion rights, please contact us using the developer contact details listed on the yqh app details page in the TikTok Developer Portal (developers.tiktok.com). We will respond and handle your request within a reasonable time.</p>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <div class="rule"></div>
+    <p>© 2026 yqh. 本页面为 yqh 应用的官方隐私政策，与在 TikTok 开发者平台登记的应用信息一致。 · This page is the official Privacy Policy for the yqh app, consistent with the app information registered in the TikTok Developer Portal.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var zh = document.getElementById('doc-zh');
+  var en = document.getElementById('doc-en');
+  var bZh = document.getElementById('btn-zh');
+  var bEn = document.getElementById('btn-en');
+  var hint = document.getElementById('lang-hint');
+  function setLang(lang){
+    var isZh = lang === 'zh';
+    zh.classList.toggle('hidden', !isZh);
+    en.classList.toggle('hidden', isZh);
+    bZh.setAttribute('aria-pressed', isZh ? 'true' : 'false');
+    bEn.setAttribute('aria-pressed', isZh ? 'false' : 'true');
+    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
+    hint.textContent = isZh ? '以下为中文版本 · English version available above' : 'Showing the English version · 中文版见上方切换';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  bZh.addEventListener('click', function(){ setLang('zh'); });
+  bEn.addEventListener('click', function(){ setLang('en'); });
+  // If the visitor's browser prefers English, start in English.
+  try {
+    var pref = (navigator.language || '').toLowerCase();
+    if (pref.indexOf('zh') !== 0 && pref.indexOf('en') === 0) setLang('en');
+  } catch(e) {}
+})();
+</script>
+</body>
+</html>

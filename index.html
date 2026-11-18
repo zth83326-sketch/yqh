@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="yqh 是一款短视频发布工具，帮助创作者和商家把制作好的视频通过 TikTok 官方 Content Posting API 直接发布到 TikTok 主页，支持定时排队和 AI 生成内容标注。" />
+    <link rel="icon" href="data:," />
+    <title>yqh — 短视频发布工具</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-soft: #f6f6f4;
+        --ink: #16161a;
+        --ink-2: #3f3f46;
+        --ink-3: #6d6d75;
+        --line: #e4e4e0;
+        --accent: #e8323f;
+        --accent-ink: #c22330;
+        --chip: #16161a;
+        --chip-ink: #ffffff;
+        --card: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101013;
+          --bg-soft: #17171b;
+          --ink: #f2f2f0;
+          --ink-2: #c9c9cd;
+          --ink-3: #9a9aa1;
+          --line: #2a2a30;
+          --accent: #ff5a66;
+          --accent-ink: #ff7a83;
+          --chip: #f2f2f0;
+          --chip-ink: #101013;
+          --card: #17171b;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+        font-size: 16px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; }
+      .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+      /* ---------- top bar ---------- */
+      header.top {
+        border-bottom: 1px solid var(--line);
+      }
+      .top-in {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 16px; min-height: 64px;
+      }
+      .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+      .brand-mark {
+        width: 30px; height: 30px; border-radius: 8px;
+        background: var(--chip); color: var(--chip-ink);
+        display: grid; place-items: center; flex: none;
+      }
+      .brand-mark svg { display: block; }
+      .brand-name { font-size: 20px; font-weight: 700; letter-spacing: .02em; line-height: 1; }
+      nav.main { display: flex; gap: 4px; }
+      nav.main a {
+        text-decoration: none; color: var(--ink-2);
+        font-size: 15px; padding: 8px 12px; border-radius: 8px;
+        min-height: 36px; display: inline-flex; align-items: center;
+      }
+      nav.main a:hover { color: var(--ink); background: var(--bg-soft); }
+      @media (max-width: 560px) {
+        nav.main a { padding: 8px 8px; font-size: 14px; }
+      }
+
+      /* ---------- hero ---------- */
+      .hero { padding: 72px 0 56px; }
+      .hero h1 {
+        margin: 0 0 20px;
+        font-size: clamp(30px, 5.4vw, 44px);
+        line-height: 1.3; font-weight: 800; letter-spacing: .01em;
+        max-width: 16em;
+      }
+      .hero h1 .hl { color: var(--accent-ink); }
+      .hero p.lede {
+        margin: 0; max-width: 34em;
+        font-size: 17px; color: var(--ink-2);
+      }
+      .hero-meta {
+        margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 10px;
+      }
+      .hero-meta span {
+        font-size: 13.5px; color: var(--ink-2);
+        border: 1px solid var(--line); border-radius: 999px;
+        padding: 5px 12px; background: var(--card);
+      }
+      .hero-meta span b { color: var(--ink); font-weight: 600; }
+
+      /* ---------- sections ---------- */
+      section.block { padding: 52px 0; border-top: 1px solid var(--line); }
+      section.block h2 {
+        margin: 0 0 14px; font-size: 24px; font-weight: 750; line-height: 1.4;
+      }
+      section.block .intro { margin: 0 0 8px; color: var(--ink-2); max-width: 38em; }
+      .soft { background: var(--bg-soft); }
+      .soft section.block { border-top: none; }
+
+      /* feature list */
+      .features { list-style: none; margin: 26px 0 0; padding: 0; }
+      .features li {
+        display: grid; grid-template-columns: 44px 1fr; gap: 6px 16px;
+        padding: 20px 0; border-top: 1px solid var(--line);
+      }
+      .features li:first-child { border-top: none; padding-top: 6px; }
+      .features .no {
+        font-size: 14px; font-weight: 700; color: var(--accent-ink);
+        padding-top: 3px; font-variant-numeric: tabular-nums;
+      }
+      .features h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; line-height: 1.5; }
+      .features p { margin: 0; color: var(--ink-2); font-size: 15.5px; max-width: 36em; }
+      .tag {
+        display: inline-block; margin-left: 8px; vertical-align: 2px;
+        font-size: 12px; font-weight: 600; color: var(--accent-ink);
+        border: 1px solid currentColor; border-radius: 999px; padding: 0 8px; line-height: 1.9;
+      }
+
+      /* steps */
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 26px; }
+      .step .n {
+        width: 30px; height: 30px; border-radius: 50%;
+        background: var(--chip); color: var(--chip-ink);
+        display: grid; place-items: center;
+        font-size: 14px; font-weight: 700; margin-bottom: 12px;
+      }
+      .step h3 { margin: 0 0 6px; font-size: 16.5px; font-weight: 700; }
+      .step p { margin: 0; color: var(--ink-2); font-size: 15px; }
+      @media (max-width: 680px) { .steps { grid-template-columns: 1fr; gap: 22px; } }
+
+      /* audience */
+      .audience { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 26px; }
+      .aud {
+        background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+        padding: 24px 26px;
+      }
+      .aud h3 { margin: 0 0 8px; font-size: 18px; font-weight: 750; }
+      .aud p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+      @media (max-width: 680px) { .audience { grid-template-columns: 1fr; } }
+
+      /* ---------- footer ---------- */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 34px 0 44px;
+      }
+      .foot-in { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+      .foot-brand { font-weight: 700; font-size: 16px; }
+      .foot-note { color: var(--ink-3); font-size: 14px; }
+      .foot-links { margin-left: auto; display: flex; gap: 6px; }
+      .foot-links a {
+        color: var(--ink-2); text-decoration: none; font-size: 14.5px;
+        padding: 8px 10px; border-radius: 8px; min-height: 36px;
+        display: inline-flex; align-items: center;
+      }
+      .foot-links a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+      @media (max-width: 560px) { .foot-links { margin-left: 0; } }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap top-in">
+        <a class="brand" href="#top" aria-label="yqh 首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="brand-name">yqh</span>
+        </a>
+        <nav class="main" aria-label="主导航">
+          <a href="#features">功能</a>
+          <a href="#how">使用方式</a>
+          <a href="#who">适用人群</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="wrap">
+        <div class="hero">
+          <h1>视频做好了，<br />直接发到 <span class="hl">TikTok 主页</span></h1>
+          <p class="lede">
+            yqh 是一款短视频发布工具，帮助创作者和商家把制作好的视频，通过 TikTok 官方
+            Content Posting API 直接发布到自己的 TikTok 主页——不用再一部部手动打开 App 上传。
+          </p>
+          <div class="hero-meta" aria-label="产品要点">
+            <span>走 <b>TikTok 官方接口</b> 发布</span>
+            <span>支持 <b>定时排队</b></span>
+            <span>默认带 <b>AI 生成内容标注</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="soft">
+        <div class="wrap">
+          <section class="block" id="features">
+            <h2>主要功能</h2>
+            <p class="intro">从准备视频到定时发出，一条发布流程里需要的都在这里。</p>
+            <ol class="features">
+              <li>
+                <span class="no">01</span>
+                <div>
+                  <h3>上传视频，或粘贴视频链接</h3>
+                  <p>把制作好的成片直接上传，也可以粘贴一条公开的视频链接作为发布素材，两种方式任选。</p>
+                </div>
+              </li>
+              <li>
+                <span class="no">02</span>
+                <div>
+                  <h3>写文案</h3>
+                  <p>为每条视频填写发布文案，文案会随视频一起提交到 TikTok。</p>
+                </div>
+              </li>
+              <li>
+                <span class="no">03</span>
+                <div>
+                  <h3>选隐私设置</h3>
+                  <p>发布前为每条视频选择隐私范围，按你的节奏决定谁能看到。</p>
+                </div>
+              </li>
+              <li>
+                <span class="no">04</span>
+                <div>
+                  <h3>定时排队发布</h3>
+                  <p>把多条视频排进发布队列，设定好时间，到点自动逐条发布，不用守在电脑前。</p>
+                </div>
+              </li>
+              <li>
+                <span class="no">05</span>
+                <div>
+                  <h3>AI 生成内容标注<span class="tag">默认开启</span></h3>
+                  <p>每次发布都会默认带上 AI 生成内容标注，发布的视频会显示“创作者标注为 AI 生成”，符合平台对 AI 内容的标注要求。</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <section class="block" id="how">
+          <h2>使用方式</h2>
+          <p class="intro">连接一次账号，之后每条视频都是同样的三步。</p>
+          <div class="steps">
+            <div class="step">
+              <div class="n">1</div>
+              <h3>连接 TikTok 账号</h3>
+              <p>通过 TikTok 官方授权连接你的账号，yqh 只在你授权的范围内调用官方接口。</p>
+            </div>
+            <div class="step">
+              <div class="n">2</div>
+              <h3>准备视频</h3>
+              <p>上传视频或粘贴链接，写好文案，选好隐私设置。</p>
+            </div>
+            <div class="step">
+              <div class="n">3</div>
+              <h3>立即发布或排队</h3>
+              <p>马上发布，或者排进队列定时发出，发布状态随时可查。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="who">
+          <h2>适用人群</h2>
+          <div class="audience">
+            <div class="aud">
+              <h3>创作者</h3>
+              <p>经常更新短视频、想把发布时间固定下来的人。视频先批量准备好，排进队列按计划发出，把精力留给创作本身。</p>
+            </div>
+            <div class="aud">
+              <h3>商家</h3>
+              <p>用短视频展示商品的店铺和品牌。成片做好后统一排期发布，多条内容一次安排完，不用每天手动上传。</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap foot-in">
+        <span class="foot-brand">yqh</span>
+        <span class="foot-note">短视频发布工具 · © 2026 yqh</span>
+        <nav class="foot-links" aria-label="法律信息">
+          <a href="https://muse.ai/s/yqh-fu-wu-tiao-kuan-xnxd6xsxbryuxoxmj/I7mwbc0fCXeC241XEs8pWOQZ7gcGIKeIvN4lmX_L9Xg" target="_blank" rel="noopener">服务条款</a>
+          <a href="https://muse.ai/s/yqh-yin-si-zheng-ce-lp6xsxbr8kp7xn/Sm-tJ9KyeuQaeyJCnOiv7_OPow0H8B8WZpwBB1GOib8" target="_blank" rel="noopener">隐私政策</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
